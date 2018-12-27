@@ -1,0 +1,3 @@
+enum ObjectID {
+ PLAYER, BLOCK, ENEMY, BULLET 
+}
