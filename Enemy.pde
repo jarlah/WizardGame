@@ -2,7 +2,7 @@ import java.util.Random;
 
 class Enemy extends Entity {
   Random random = new Random();
-  
+
   Enemy(int x, int y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
     super(x, y, w, h, ObjectID.ENEMY, objectHandler, inputHandler);
   }
