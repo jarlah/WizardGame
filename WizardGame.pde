@@ -14,7 +14,7 @@ void setup() {
   camera = new Camera(0, 0, TILE_SIZE, TILE_SIZE, width, height);
   inputHandler = new InputHandler();
   objectHandler = new ObjectHandler(inputHandler);
-  PImage mapImg = loadImage("game.png");
+  PImage mapImg = loadImage("level1map.png");
   mapImg.loadPixels();
   loadMap(mapImg.pixels, mapImg.width, mapImg.height, TILE_SIZE, TILE_SIZE, objectHandler);
 }

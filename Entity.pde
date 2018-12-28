@@ -39,4 +39,18 @@ abstract class Entity {
   boolean isCollision() {
     return getCollidingEntity() != null;
   }
+  
+  void tryAdvance() {
+    int oldX = x;
+    x += xVel;
+    if (isCollision()) {
+      x = oldX;
+    } 
+    
+    int oldY = y;
+    y += yVel;
+    if (isCollision()) {
+      y = oldY;
+    } 
+  }
 }

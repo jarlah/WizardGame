@@ -8,17 +8,8 @@ class Enemy extends Entity {
   }
 
   void update() {
-    int oldX = x;
-    int oldY = y;
-
-    x += xVel;
-    y += yVel;
-
-    if (isCollision()) {
-      x = oldX;
-      y = oldY;
-    }
-
+    tryAdvance();
+    
     int choose = random.nextInt(10);
     if (choose == 0) {
       xVel = (random.nextInt(8) - 4);

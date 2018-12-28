@@ -4,16 +4,7 @@ class Player extends Entity {
   }
 
   void update() {    
-    int oldX = x;
-    int oldY = y;
-
-    x += xVel;
-    y += yVel;
-
-    if (isCollision()) {
-      x = oldX;
-      y = oldY;
-    }
+    tryAdvance();
 
     if (inputHandler.up) yVel = -5;
     else if (!inputHandler.down) yVel = 0;

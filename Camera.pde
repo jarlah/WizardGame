@@ -29,8 +29,8 @@ class Camera {
     if (y <= 0) {
       y = 0;
     }
-    if (y >= windowHeight + tileHeight) {
-      y = windowHeight + tileHeight;
+    if (y >= windowHeight) {
+      y = windowHeight;
     }
   }
 }
