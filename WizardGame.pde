@@ -43,6 +43,11 @@ void gameScreen() {
   translate(-camera.x, -camera.y);
   objectHandler.draw();
   translate(camera.x, camera.y);
+  fill(208);
+  rect(0, 0, 120, 32);
+  fill(0);
+  textSize(14);
+  text("Bullets: " + objectHandler.player.ammo, 50, 18);
 }
 
 void gameOverScreen() {
