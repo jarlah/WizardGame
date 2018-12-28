@@ -1,12 +1,13 @@
 abstract class Entity {
-  int x, y, w, h, xVel, yVel;
+  float x, y, xVel, yVel;
+  int w, h;
   ObjectID objectId;
   ObjectHandler objectHandler;
   InputHandler inputHandler;
 
-  Entity(int x, int y, int w, int h, ObjectID objectId, ObjectHandler objectHandler, InputHandler inputHandler) {
-    this.x = x * w;
-    this.y = y * h;
+  Entity(float x, float y, int w, int h, ObjectID objectId, ObjectHandler objectHandler, InputHandler inputHandler) {
+    this.x = x;
+    this.y = y;
     this.w = w;
     this.h = h;
     this.objectId = objectId;
@@ -38,18 +39,18 @@ abstract class Entity {
   boolean isCollision() {
     return getCollidingEntity() != null;
   }
-  
+
   void tryAdvance() {
-    int oldX = x;
+    float oldX = x;
     x += xVel;
     if (isCollision()) {
       x = oldX;
     } 
-    
-    int oldY = y;
+
+    float oldY = y;
     y += yVel;
     if (isCollision()) {
       y = oldY;
-    } 
+    }
   }
 }

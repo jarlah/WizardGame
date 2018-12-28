@@ -1,5 +1,5 @@
 class Player extends Entity {
-  Player(int x, int y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
+  Player(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
     super(x, y, w, h, ObjectID.PLAYER, objectHandler, inputHandler);
   }
 

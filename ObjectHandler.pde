@@ -27,7 +27,7 @@ class ObjectHandler {
     entities.add(enemy);
   }
 
-  void addBullet(int x, int y, int w, int h, int mouseX, int mouseY) {
+  void addBullet(float x, float y, int w, int h, float mouseX, float mouseY) {
     Bullet bullet = new Bullet(x, y, w, h, this, inputHandler, mouseX, mouseY);
     bullets.add(bullet);
     entities.add(bullet);
@@ -51,7 +51,7 @@ class ObjectHandler {
 
   void update() {
     List<Entity> objects = entities;
-    for(int i = 0; i < objects.size(); i++) {
+    for (int i = 0; i < objects.size(); i++) {
       if (i >= objects.size()) {
         break;
       }
@@ -61,7 +61,7 @@ class ObjectHandler {
 
   void draw() {
     List<Entity> objects = entities;
-    for(int i = 0; i < objects.size(); i++) {
+    for (int i = 0; i < objects.size(); i++) {
       if (i >= objects.size()) {
         break;
       }

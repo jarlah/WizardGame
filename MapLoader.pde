@@ -4,13 +4,13 @@ void loadMap(int[] pixels, int w, int h, int tw, int th, ObjectHandler handler) 
       int loc = x + y * w;
       float c = pixels[loc];
       if (c == 0xFFFF0000) {
-        handler.addBlock(x, y, tw, th);
+        handler.addBlock(x * tw, y * th, tw, th);
       }
       if (c == 0xFF0000FF) {
-        handler.setPlayer(x, y, tw, th);
+        handler.setPlayer(x * tw, y * th, tw, th);
       }
       if (c == 0xFF00FF00) {
-        handler.addEnemy(x, y, tw, th);
+        handler.addEnemy(x * tw, y * th, tw, th);
       }
     }
   }

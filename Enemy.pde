@@ -5,7 +5,7 @@ class Enemy extends Entity {
 
   int health = 10;
 
-  Enemy(int x, int y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
+  Enemy(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
     super(x, y, w, h, ObjectID.ENEMY, objectHandler, inputHandler);
   }
 

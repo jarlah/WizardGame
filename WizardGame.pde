@@ -10,7 +10,6 @@ static final int TILE_SIZE = 32;
 
 void setup() {
   size(640, 480, P2D);
-  sketchPath("./");
   camera = new Camera(0, 0, TILE_SIZE, width, height);
   inputHandler = new InputHandler();
   objectHandler = new ObjectHandler(inputHandler);
@@ -54,12 +53,12 @@ public void mousePressed(MouseEvent event) {
   if (gameScreen == 0) {
     startGame();
   } else {
-    int mouseX = (int) (event.getX() + camera.x);
-    int mouseY = (int) (event.getY() + camera.y);
     Entity player = objectHandler.player;
-    int bulletXPos = (player.x + player.w) / TILE_SIZE;
-    int bulletYPos = (player.y + player.h) / TILE_SIZE;
-    objectHandler.addBullet(bulletXPos, bulletYPos, TILE_SIZE, TILE_SIZE, mouseX, mouseY);
+    float bulletXPosition = player.x + player.w / 2;
+    float bulletYPosition = player.y + player.h / 2;
+    float targetXPosition = event.getX() + camera.x;
+    float targetYPosition = event.getY() + camera.y;
+    objectHandler.addBullet(bulletXPosition, bulletYPosition, TILE_SIZE, TILE_SIZE, targetXPosition, targetYPosition);
   }
 }
 
