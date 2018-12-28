@@ -25,10 +25,14 @@ class Bullet extends Entity { //<>//
 
   void draw() {
     fill(0, 0, 0);
-    ellipse(x, y, 8, 8);
+    ellipse(x, y, w, h);
   }
 
   void hit() {
     objectHandler.removeBullet(this);
+  }
+
+  void onCollision(Entity crate) {
+
   }
 }

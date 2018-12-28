@@ -10,4 +10,7 @@ class Block extends Entity {
     fill(125, 108, 108);
     rect(x, y, w, h);
   }
+
+  void onCollision(Entity crate) {
+  }
 }

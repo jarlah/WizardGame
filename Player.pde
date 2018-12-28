@@ -1,4 +1,7 @@
 class Player extends Entity {
+
+  int ammo = 100;
+
   Player(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
     super(x, y, w, h, ObjectID.PLAYER, objectHandler, inputHandler);
   }
@@ -22,5 +25,23 @@ class Player extends Entity {
   void draw() {
     fill(255, 0, 0);
     rect(x, y, w, h);
+  }
+
+  void onCollision(Entity crate) {
+    if (crate.objectId == ObjectID.CRATE) {
+      ammo += ((Crate) crate).ammo;
+      objectHandler.removeCrate(crate);
+    }
+  }
+
+  void fire(float mouseX, float mouseY) {
+    if (ammo > 0) {
+      float bulletXPosition = x + w / 2;
+      float bulletYPosition = y + h / 2;
+      float targetXPosition = mouseX;
+      float targetYPosition = mouseY;
+      objectHandler.addBullet(bulletXPosition, bulletYPosition, 8, 8, targetXPosition, targetYPosition);
+      ammo--;
+    }
   }
 }

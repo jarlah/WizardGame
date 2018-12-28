@@ -1,4 +1,4 @@
-import java.util.List; //<>//
+import java.util.List; //<>// //<>//
 import java.util.ArrayList;
 
 class ObjectHandler {
@@ -7,7 +7,8 @@ class ObjectHandler {
   List<Entity> blocks = new ArrayList<Entity>();
   List<Entity> enemies = new ArrayList<Entity>();
   List<Entity> bullets = new ArrayList<Entity>();
-  Entity player = null;
+  List<Entity> crates = new ArrayList<Entity>();
+  Player player = null;
 
   InputHandler inputHandler;
 
@@ -24,6 +25,12 @@ class ObjectHandler {
   void addEnemy(int x, int y, int w, int h) {
     Enemy enemy = new Enemy(x, y, w, h, this, inputHandler);
     enemies.add(enemy);
+    entities.add(enemy);
+  }
+
+  void addCrate(int x, int y, int w, int h) {
+    Crate enemy = new Crate(x, y, w, h, this, inputHandler);
+    crates.add(enemy);
     entities.add(enemy);
   }
 
@@ -48,6 +55,10 @@ class ObjectHandler {
     entities.remove(enemy);
   }
 
+  void removeCrate(Entity crate) {
+    crates.remove(crate);
+    entities.remove(crate);
+  }
 
   void update() {
     List<Entity> objects = entities;

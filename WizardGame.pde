@@ -53,12 +53,9 @@ public void mousePressed(MouseEvent event) {
   if (gameScreen == 0) {
     startGame();
   } else {
-    Entity player = objectHandler.player;
-    float bulletXPosition = player.x + player.w / 2;
-    float bulletYPosition = player.y + player.h / 2;
     float targetXPosition = event.getX() + camera.x;
     float targetYPosition = event.getY() + camera.y;
-    objectHandler.addBullet(bulletXPosition, bulletYPosition, TILE_SIZE, TILE_SIZE, targetXPosition, targetYPosition);
+    objectHandler.player.fire(targetXPosition, targetYPosition);
   }
 }
 

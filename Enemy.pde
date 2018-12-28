@@ -3,7 +3,7 @@ import java.util.Random;
 class Enemy extends Entity {
   Random random = new Random();
 
-  int health = 10;
+  int health = 100;
 
   Enemy(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
     super(x, y, w, h, ObjectID.ENEMY, objectHandler, inputHandler);
@@ -25,9 +25,12 @@ class Enemy extends Entity {
   }
 
   void hit() {
-    health --;
+    health -= 50;
     if (health <= 0) {
       objectHandler.removeEnemy(this);
     }
+  }
+
+  void onCollision(Entity crate) {
   }
 }

@@ -19,6 +19,8 @@ abstract class Entity {
 
   abstract void draw();
 
+  abstract void onCollision(Entity crate);
+
   public boolean intersects(Entity other) {
     return other.w > 0 && other.h > 0 && w > 0 && h > 0
       && other.x < x + w && other.x + other.w > x
@@ -36,20 +38,20 @@ abstract class Entity {
     return null;
   }
 
-  boolean isCollision() {
-    return getCollidingEntity() != null;
-  }
-
   void tryAdvance() {
     float oldX = x;
     x += xVel;
-    if (isCollision()) {
+    Entity entityX = getCollidingEntity();
+    if (entityX != null) {
+      onCollision(entityX);
       x = oldX;
     } 
 
     float oldY = y;
     y += yVel;
-    if (isCollision()) {
+    Entity entityY = getCollidingEntity();
+    if (entityY != null) {
+      onCollision(entityY);
       y = oldY;
     }
   }
