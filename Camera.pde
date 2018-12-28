@@ -1,17 +1,15 @@
 class Camera {
 
-  private final int windowWidth;
-  private final int windowHeight;
-  private final int tileHeight;
-  private final int tileWidth;
+  int windowWidth;
+  int windowHeight;
+  int tileWidth;
 
-  private float x, y;
+  float x, y;
 
-  Camera(float x, float y, final int tileWidth, final int tileHeight, int windowWidth, int windowHeight) {
+  Camera(float x, float y, int tileWidth, int windowWidth, int windowHeight) {
     this.x = x;
     this.y = y;
     this.tileWidth = tileWidth;
-    this.tileHeight = tileHeight;
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
   }

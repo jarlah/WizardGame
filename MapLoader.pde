@@ -10,7 +10,7 @@ void loadMap(int[] pixels, int w, int h, int tw, int th, ObjectHandler handler) 
         handler.setPlayer(x, y, tw, th);
       }
       if (c == 0xFF00FF00) {
-        handler.addEnemy(x, y, tw, th); //<>// //<>// //<>// //<>//
+        handler.addEnemy(x, y, tw, th);
       }
     }
   }

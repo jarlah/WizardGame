@@ -6,12 +6,12 @@ InputHandler inputHandler;
 
 Camera camera;
 
-final int TILE_SIZE = 32;
+static final int TILE_SIZE = 32;
 
 void setup() {
   size(640, 480, P2D);
   sketchPath("./");
-  camera = new Camera(0, 0, TILE_SIZE, TILE_SIZE, width, height);
+  camera = new Camera(0, 0, TILE_SIZE, width, height);
   inputHandler = new InputHandler();
   objectHandler = new ObjectHandler(inputHandler);
   PImage mapImg = loadImage("level1map.png");
@@ -57,7 +57,9 @@ public void mousePressed(MouseEvent event) {
     int mouseX = (int) (event.getX() + camera.x);
     int mouseY = (int) (event.getY() + camera.y);
     Entity player = objectHandler.player;
-    objectHandler.addBullet((player.x + player.w / 2) / TILE_SIZE, (player.y + player.h / 2) / TILE_SIZE, TILE_SIZE, TILE_SIZE, mouseX, mouseY);
+    int bulletXPos = (player.x + player.w) / TILE_SIZE;
+    int bulletYPos = (player.y + player.h) / TILE_SIZE;
+    objectHandler.addBullet(bulletXPos, bulletYPos, TILE_SIZE, TILE_SIZE, mouseX, mouseY);
   }
 }
 

@@ -1,12 +1,12 @@
-import java.util.List;
+import java.util.List; //<>//
 import java.util.ArrayList;
 
 class ObjectHandler {
 
+  List<Entity> entities = new ArrayList<Entity>();
   List<Entity> blocks = new ArrayList<Entity>();
   List<Entity> enemies = new ArrayList<Entity>();
   List<Entity> bullets = new ArrayList<Entity>();
-
   Entity player = null;
 
   InputHandler inputHandler;
@@ -16,45 +16,56 @@ class ObjectHandler {
   }
 
   void addBlock(int x, int y, int w, int h) {
-    blocks.add(new Block(x, y, w, h, this, inputHandler));
+    Block block = new Block(x, y, w, h, this, inputHandler);
+    blocks.add(block);
+    entities.add(block);
   }
 
   void addEnemy(int x, int y, int w, int h) {
-    enemies.add(new Enemy(x, y, w, h, this, inputHandler));
+    Enemy enemy = new Enemy(x, y, w, h, this, inputHandler);
+    enemies.add(enemy);
+    entities.add(enemy);
   }
 
   void addBullet(int x, int y, int w, int h, int mouseX, int mouseY) {
-    bullets.add(new Bullet(x, y, w, h, this, inputHandler, mouseX, mouseY)); //<>//
+    Bullet bullet = new Bullet(x, y, w, h, this, inputHandler, mouseX, mouseY);
+    bullets.add(bullet);
+    entities.add(bullet);
   }
 
   void setPlayer(int x, int y, int w, int h) {
     player = new Player(x, y, w, h, this, inputHandler);
+    entities.add(player);
   }
 
   void removeBullet(Entity bullet) {
     bullets.remove(bullet);
+    entities.remove(bullet);
   }
 
+  void removeEnemy(Entity enemy) {
+    enemies.remove(enemy);
+    entities.remove(enemy);
+  }
+
+
   void update() {
-    List<Entity> objects = getObjects();
-    for (Entity object : objects) {
-      object.update();
+    List<Entity> objects = entities;
+    for(int i = 0; i < objects.size(); i++) {
+      if (i >= objects.size()) {
+        break;
+      }
+      objects.get(i).update();
     }
   }
 
   void draw() {
-    List<Entity> objects = getObjects();
-    for (Entity object : objects) {
-      object.draw();
+    List<Entity> objects = entities;
+    for(int i = 0; i < objects.size(); i++) {
+      if (i >= objects.size()) {
+        break;
+      }
+      objects.get(i).draw();
     }
-  }
-
-  List<Entity> getObjects() {
-    List<Entity> objects = new ArrayList<Entity>();
-    objects.addAll(blocks);
-    objects.addAll(enemies);
-    objects.addAll(bullets);
-    objects.add(player);
-    return objects;
   }
 }

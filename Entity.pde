@@ -25,11 +25,10 @@ abstract class Entity {
   }
 
   Entity getCollidingEntity() {
-    List<Entity> objects = this.objectHandler.blocks;
+    List<Entity> objects = this.objectHandler.entities;
     for (int i = 0; i < objects.size(); i++) {
       Entity gameObject = objects.get(i);
-      if (gameObject.objectId == ObjectID.BLOCK &&
-        intersects(gameObject)) {
+      if (!gameObject.equals(this) && intersects(gameObject)) {
         return gameObject;
       }
     }

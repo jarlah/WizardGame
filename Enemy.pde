@@ -3,13 +3,15 @@ import java.util.Random;
 class Enemy extends Entity {
   Random random = new Random();
 
+  int health = 10;
+
   Enemy(int x, int y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
     super(x, y, w, h, ObjectID.ENEMY, objectHandler, inputHandler);
   }
 
   void update() {
     tryAdvance();
-    
+
     int choose = random.nextInt(10);
     if (choose == 0) {
       xVel = (random.nextInt(8) - 4);
@@ -20,5 +22,12 @@ class Enemy extends Entity {
   void draw() {
     fill(18, 233, 23);
     rect(x, y, w, h);
+  }
+
+  void hit() {
+    health --;
+    if (health <= 0) {
+      objectHandler.removeEnemy(this);
+    }
   }
 }
