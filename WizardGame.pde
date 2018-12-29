@@ -11,12 +11,12 @@ PImage[][] sprites;
 static final int TILE_SIZE = 32;
 
 void setup() {
-  size(640, 480, P2D);
+  fullScreen(P2D);
   camera = new Camera(0, 0, TILE_SIZE, width, height);
   sprites = loadSprites();
   inputHandler = new InputHandler();
   objectHandler = new ObjectHandler(inputHandler);
-  PImage mapImg = loadImage("level1map.png");
+  PImage mapImg = loadImage("level2map.png");
   mapImg.loadPixels();
   loadMap(mapImg.pixels, mapImg.width, mapImg.height, TILE_SIZE, TILE_SIZE, objectHandler);
 }
