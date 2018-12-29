@@ -33,6 +33,7 @@ class Game {
 
   void initScreen() {
     background(0);
+    fill(255);
     textAlign(CENTER);
     text("Click to start", height / 2, width / 2);
   }
@@ -40,19 +41,24 @@ class Game {
   void gameScreen() {
     background(99);
     objectHandler.update();
+    if (objectHandler.player.health <= 0) {
+     gameScreen = 2;
+    }
     camera.update(objectHandler.player);
     translate(-camera.x, -camera.y);
     objectHandler.draw();
     translate(camera.x, camera.y);
     fill(208);
-    rect(0, 0, 120, 32);
+    rect(0, 0, 200, 32);
     fill(0);
     textSize(14);
-    text("Bullets: " + objectHandler.player.ammo, 50, 18);
+    text("Bullets: " + objectHandler.player.ammo + ", Health: " + objectHandler.player.health, 100, 18);
   }
 
   void gameOverScreen() {
     background(255);
+    textAlign(CENTER);
+    text("Game over", height / 2, width / 2);
   }
 
   void startGame() {
@@ -62,7 +68,7 @@ class Game {
   void mousePressed(MouseEvent event) {
     if (gameScreen == 0) {
       startGame();
-    } else {
+    } else if (gameScreen == 1) {
       objectHandler.player.fire(event.getX() + camera.x, event.getY() + camera.y);
     }
   }

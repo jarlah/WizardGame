@@ -1,4 +1,4 @@
-import java.util.List; //<>//
+import java.util.List;
 import java.util.ArrayList;
 
 class ObjectHandler {
@@ -17,6 +17,11 @@ class ObjectHandler {
   void addBlock(int x, int y, int w, int h) {
     Block block = new Block(x, y, w, h, this, sprites);
     entities.add(block);
+  }
+
+  void addPotion(int x, int y, int w, int h) {
+    Potion potion = new Potion(x, y, w, h, this, sprites);
+    entities.add(potion);
   }
 
   void addEnemy(int x, int y, int w, int h) {
@@ -39,16 +44,8 @@ class ObjectHandler {
     entities.add(player);
   }
 
-  void removeBullet(Entity bullet) {
-    entities.remove(bullet);
-  }
-
-  void removeEnemy(Entity enemy) {
-    entities.remove(enemy);
-  }
-
-  void removeCrate(Entity crate) {
-    entities.remove(crate);
+  void removeEntity(Entity entity) {
+    entities.remove(entity);
   }
 
   void update() {

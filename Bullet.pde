@@ -12,14 +12,13 @@ class Bullet extends Entity { //<>//
     x += xVel;
     y += yVel;
     Entity entity = getCollidingEntity();
-    if (entity != null) {
-      if (entity instanceof Block) {
-        hit();
-      }
-      if (entity instanceof Enemy) {
-        ((Enemy)entity).hit();
-        hit();
-      }
+    if (entity instanceof Block) {
+      ((Block)entity).hit();
+      hit();
+    }
+    if (entity instanceof Enemy) {
+      ((Enemy)entity).hit();
+      hit();
     }
   }
 
@@ -29,10 +28,9 @@ class Bullet extends Entity { //<>//
   }
 
   void hit() {
-    objectHandler.removeBullet(this);
+    objectHandler.removeEntity(this);
   }
 
-  void onCollision(Entity crate) {
-
+  void onCollision(Entity entity) {
   }
 }

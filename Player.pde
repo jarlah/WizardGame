@@ -1,9 +1,11 @@
 class Player extends Entity {
   final InputHandler inputHandler;
   
-  int speed = 3;
+  float speed = 2.5;
 
   int ammo = 100;
+  
+  int health = 100;
 
   Player(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler, Sprites sprites) {
     super(x, y, w, h, ObjectID.PLAYER, objectHandler, sprites);
@@ -33,8 +35,16 @@ class Player extends Entity {
   void onCollision(Entity crate) {
     if (crate.objectId == ObjectID.CRATE) {
       ammo += ((Crate) crate).ammo;
-      objectHandler.removeCrate(crate);
+      objectHandler.removeEntity(crate);
     }
+    if (crate.objectId == ObjectID.POTION) {
+      health += ((Potion) crate).health;
+      objectHandler.removeEntity(crate);
+    }
+  }
+  
+  void hit() {
+   health -= 1;
   }
 
   void fire(float mouseX, float mouseY) {

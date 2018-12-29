@@ -15,6 +15,9 @@ void loadMap(int[] pixels, int w, int h, int tw, int th, ObjectHandler handler) 
       if (c == 0xFFFF00FF) {
         handler.addCrate(x * tw, y * th, tw, th);
       }
+      if (c == 0xFFFFFFFF) {
+        handler.addPotion(x * tw, y * th, tw, th);
+      }
     }
   }
 }

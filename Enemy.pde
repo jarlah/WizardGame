@@ -3,6 +3,8 @@ import java.util.Random;
 class Enemy extends Entity {
   Random random = new Random();
 
+  boolean touching = false;
+
   int health = 100;
 
   Enemy(float x, float y, int w, int h, ObjectHandler objectHandler, Sprites sprites) {
@@ -24,12 +26,18 @@ class Enemy extends Entity {
   }
 
   void hit() {
-    health -= 10;
+    health -= 20;
     if (health <= 0) {
-      objectHandler.removeEnemy(this);
+      objectHandler.removeEntity(this);
     }
   }
 
   void onCollision(Entity crate) {
+    if (!touching && crate.objectId == ObjectID.PLAYER) {
+      ((Player)crate).hit();
+      touching = true;
+    } else {
+      touching = false;
+    }
   }
 }
