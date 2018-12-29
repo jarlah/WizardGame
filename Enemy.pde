@@ -5,8 +5,8 @@ class Enemy extends Entity {
 
   int health = 100;
 
-  Enemy(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
-    super(x, y, w, h, ObjectID.ENEMY, objectHandler, inputHandler);
+  Enemy(float x, float y, int w, int h, ObjectHandler objectHandler, Sprites sprites) {
+    super(x, y, w, h, ObjectID.ENEMY, objectHandler, sprites);
   }
 
   void update() {
@@ -20,7 +20,7 @@ class Enemy extends Entity {
   }
 
   void draw() {
-    image(sprites[13][94], x, y);
+    image(sprites.getEnemy(), x, y);
   }
 
   void hit() {

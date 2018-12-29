@@ -1,9 +1,11 @@
 class Player extends Entity {
-
+  private final InputHandler inputHandler;
+  
   int ammo = 100;
 
-  Player(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
-    super(x, y, w, h, ObjectID.PLAYER, objectHandler, inputHandler);
+  Player(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler, Sprites sprites) {
+    super(x, y, w, h, ObjectID.PLAYER, objectHandler, sprites);
+    this.inputHandler = inputHandler;
   }
 
   void update() {    
@@ -23,7 +25,7 @@ class Player extends Entity {
   }
 
   void draw() {
-    image(sprites[33][76], x, y);
+    image(sprites.getPlayer(), x, y);
   }
 
   void onCollision(Entity crate) {

@@ -3,16 +3,16 @@ abstract class Entity {
   int w, h;
   ObjectID objectId;
   ObjectHandler objectHandler;
-  InputHandler inputHandler;
+  Sprites sprites;
 
-  Entity(float x, float y, int w, int h, ObjectID objectId, ObjectHandler objectHandler, InputHandler inputHandler) {
+  Entity(float x, float y, int w, int h, ObjectID objectId, ObjectHandler objectHandler, Sprites sprites) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.objectId = objectId;
     this.objectHandler = objectHandler;
-    this.inputHandler = inputHandler;
+    this.sprites = sprites;
   }
 
   abstract void update();

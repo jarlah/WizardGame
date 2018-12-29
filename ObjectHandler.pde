@@ -8,40 +8,43 @@ class ObjectHandler {
   List<Entity> enemies = new ArrayList<Entity>();
   List<Entity> bullets = new ArrayList<Entity>();
   List<Entity> crates = new ArrayList<Entity>();
+  
   Player player = null;
 
   InputHandler inputHandler;
-
-  ObjectHandler(InputHandler inputHandler) {
+  Sprites sprites;
+  
+  ObjectHandler(InputHandler inputHandler, Sprites sprites) {
     this.inputHandler = inputHandler;
+    this.sprites = sprites;
   }
 
   void addBlock(int x, int y, int w, int h) {
-    Block block = new Block(x, y, w, h, this, inputHandler);
+    Block block = new Block(x, y, w, h, this, sprites);
     blocks.add(block);
     entities.add(block);
   }
 
   void addEnemy(int x, int y, int w, int h) {
-    Enemy enemy = new Enemy(x, y, w, h, this, inputHandler);
+    Enemy enemy = new Enemy(x, y, w, h, this, sprites);
     enemies.add(enemy);
     entities.add(enemy);
   }
 
   void addCrate(int x, int y, int w, int h) {
-    Crate enemy = new Crate(x, y, w, h, this, inputHandler);
+    Crate enemy = new Crate(x, y, w, h, this, sprites);
     crates.add(enemy);
     entities.add(enemy);
   }
 
   void addBullet(float x, float y, int w, int h, float mouseX, float mouseY) {
-    Bullet bullet = new Bullet(x, y, w, h, this, inputHandler, mouseX, mouseY);
+    Bullet bullet = new Bullet(x, y, w, h, this, sprites, mouseX, mouseY);
     bullets.add(bullet);
     entities.add(bullet);
   }
 
   void setPlayer(int x, int y, int w, int h) {
-    player = new Player(x, y, w, h, this, inputHandler);
+    player = new Player(x, y, w, h, this, inputHandler, sprites);
     entities.add(player);
   }
 

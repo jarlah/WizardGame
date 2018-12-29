@@ -1,13 +1,13 @@
 class Block extends Entity {
-  Block(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler) {
-    super(x, y, w, h, ObjectID.BLOCK, objectHandler, inputHandler);
+  Block(float x, float y, int w, int h, ObjectHandler objectHandler, Sprites sprites) {
+    super(x, y, w, h, ObjectID.BLOCK, objectHandler, sprites);
   }
 
   void update() {
   }
 
   void draw() {
-    image(sprites[4][7], x, y);
+    image(sprites.getBlock(), x, y);
   }
 
   void onCollision(Entity crate) {
