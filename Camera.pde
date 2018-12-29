@@ -1,34 +1,29 @@
 class Camera {
 
-  int windowWidth;
-  int windowHeight;
-  int tileWidth;
+  final int windowWidth;
+  final int windowHeight;
 
-  float x, y;
+  float x;
+  float y;
 
-  Camera(float x, float y, int tileWidth, int windowWidth, int windowHeight) {
+  Camera(float x, float y, int windowWidth, int windowHeight) {
     this.x = x;
     this.y = y;
-    this.tileWidth = tileWidth;
     this.windowWidth = windowWidth;
     this.windowHeight = windowHeight;
   }
 
-  public void update(Entity object) {
-    x += ((object.x - x) - (float) windowWidth / 2) * 0.05f;
-    y += ((object.y - y) - (float) windowHeight / 2) * 0.05f;
+  void update(Entity object) {
+    x += ((object.x - x) - windowWidth / 2) * 0.05f;
+    y += ((object.y - y) - windowHeight / 2) * 0.05f;
 
     if (x <= 0) {
       x = 0;
     }
-    if (x >= windowWidth + tileWidth) {
-      x = windowWidth + tileWidth;
-    }
+
     if (y <= 0) {
       y = 0;
     }
-    if (y >= windowHeight) {
-      y = windowHeight;
-    }
   }
+
 }
