@@ -1,4 +1,4 @@
-Game game; //<>// //<>//
+Game game; //<>//
 
 void setup() {
   size(640, 480, P2D);
@@ -6,7 +6,7 @@ void setup() {
 }
 
 void draw() {
- game.draw(); 
+ game.draw();
 }
 
 public void mousePressed(MouseEvent event) {

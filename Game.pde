@@ -7,7 +7,7 @@ class Game {
 
   final int width, height;
 
-  public Game(int tileSize, int width, int height) {
+  Game(int tileSize, int width, int height) {
     this.width = width;
     this.height = height;
     sprites = new Sprites("spritesheet.png", tileSize);
@@ -31,13 +31,13 @@ class Game {
     }
   }
 
-  private void initScreen() {
+  void initScreen() {
     background(0);
     textAlign(CENTER);
     text("Click to start", height / 2, width / 2);
   }
 
-  private void gameScreen() {
+  void gameScreen() {
     background(99);
     objectHandler.update();
     camera.update(objectHandler.player);
@@ -51,15 +51,15 @@ class Game {
     text("Bullets: " + objectHandler.player.ammo, 50, 18);
   }
 
-  private void gameOverScreen() {
+  void gameOverScreen() {
     background(255);
   }
 
-  private void startGame() {
+  void startGame() {
     gameScreen = 1;
   }
 
-  public void mousePressed(MouseEvent event) {
+  void mousePressed(MouseEvent event) {
     if (gameScreen == 0) {
       startGame();
     } else {

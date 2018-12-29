@@ -21,7 +21,7 @@ abstract class Entity {
 
   abstract void onCollision(Entity crate);
 
-  public boolean intersects(Entity other) {
+  boolean intersects(Entity other) {
     return other.w > 0 && other.h > 0 && w > 0 && h > 0
       && other.x < x + w && other.x + other.w > x
       && other.y < y + h && other.y + other.h > y;

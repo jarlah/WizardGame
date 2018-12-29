@@ -24,7 +24,7 @@ class Enemy extends Entity {
   }
 
   void hit() {
-    health -= 50;
+    health -= 10;
     if (health <= 0) {
       objectHandler.removeEnemy(this);
     }

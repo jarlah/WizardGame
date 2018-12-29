@@ -9,7 +9,7 @@ class InputHandler {
     input(keyCode, key, false);
   }
 
-  private void input(int keyCode, char key, boolean enable) {
+  void input(int keyCode, char key, boolean enable) {
     if (keyCode == UP || key == 'w') {
       up = enable;
     }

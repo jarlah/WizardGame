@@ -1,6 +1,8 @@
 class Player extends Entity {
   final InputHandler inputHandler;
   
+  int speed = 3;
+
   int ammo = 100;
 
   Player(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler, Sprites sprites) {
@@ -11,16 +13,16 @@ class Player extends Entity {
   void update() {    
     tryAdvance();
 
-    if (inputHandler.up) yVel = -5;
+    if (inputHandler.up) yVel = -speed;
     else if (!inputHandler.down) yVel = 0;
 
-    if (inputHandler.down) yVel = 5;
+    if (inputHandler.down) yVel = speed;
     else if (!inputHandler.up) yVel = 0;
 
-    if (inputHandler.right) xVel = 5;
+    if (inputHandler.right) xVel = speed;
     else if (!inputHandler.left) xVel = 0;
 
-    if (inputHandler.left) xVel = -5;
+    if (inputHandler.left) xVel = -speed;
     else if (!inputHandler.right) xVel = 0;
   }
 
