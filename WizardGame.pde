@@ -1,9 +1,8 @@
-Game game; //<>//
+Game game; //<>// //<>//
 
 void setup() {
   size(640, 480, P2D);
   game = new Game(32, width, height);
-  game.setup();
 }
 
 void draw() {

@@ -1,5 +1,5 @@
 class Player extends Entity {
-  private final InputHandler inputHandler;
+  final InputHandler inputHandler;
   
   int ammo = 100;
 

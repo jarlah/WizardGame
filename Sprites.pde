@@ -1,5 +1,5 @@
 class Sprites {
-  private final PImage[][] sprites;
+  final PImage[][] sprites;
 
   Sprites(String path, int tileSize) {
     sprites = loadSprites(path, tileSize);
@@ -21,7 +21,7 @@ class Sprites {
     return sprites[33][76];
   }
 
-  private PImage[][] loadSprites(String path, int tileSize) {
+  PImage[][] loadSprites(String path, int tileSize) {
     PImage spriteBlock = loadImage(path);
     PImage[][] sprites = new PImage[spriteBlock.width / tileSize][spriteBlock.height / tileSize];
     for (int x = 0; x < spriteBlock.width / tileSize; x ++) {

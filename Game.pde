@@ -1,26 +1,22 @@
 class Game {
-  private InputHandler inputHandler;
-  private ObjectHandler objectHandler;
-  private Sprites sprites;
-  private Camera camera;
-  private int gameScreen = 0;
+  InputHandler inputHandler;
+  ObjectHandler objectHandler;
+  Sprites sprites;
+  Camera camera;
+  int gameScreen = 0;
 
-  private final int tileSize, width, height;
+  final int width, height;
 
   public Game(int tileSize, int width, int height) {
     this.width = width;
     this.height = height;
-    this.tileSize = tileSize;
-  }
-
-  void setup() {
-    camera = new Camera(0, 0, tileSize, width, height);
     sprites = new Sprites("spritesheet.png", tileSize);
     inputHandler = new InputHandler();
-    objectHandler = new ObjectHandler(inputHandler, sprites);
+    objectHandler = new ObjectHandler(this.inputHandler, this.sprites);
     PImage mapImg = loadImage("level2map.png");
     mapImg.loadPixels();
-    loadMap(mapImg.pixels, mapImg.width, mapImg.height, tileSize, tileSize, objectHandler);
+    camera = new Camera(0, 0, this.width, this.height);
+    loadMap(mapImg.pixels, mapImg.width, mapImg.height, tileSize, tileSize, this.objectHandler);
   }
 
   void draw() {
