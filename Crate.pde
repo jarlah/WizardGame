@@ -9,8 +9,7 @@ class Crate extends Entity {
   }
 
   void draw() {
-    fill(242, 255, 98);
-    rect(x, y, w, h);
+    image(sprites[6][0], x, y);
   }
 
   void onCollision(Entity crate) {

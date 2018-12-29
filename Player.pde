@@ -23,8 +23,7 @@ class Player extends Entity {
   }
 
   void draw() {
-    fill(255, 0, 0);
-    rect(x, y, w, h);
+    image(sprites[33][76], x, y);
   }
 
   void onCollision(Entity crate) {

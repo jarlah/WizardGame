@@ -7,8 +7,7 @@ class Block extends Entity {
   }
 
   void draw() {
-    fill(125, 108, 108);
-    rect(x, y, w, h);
+    image(sprites[4][7], x, y);
   }
 
   void onCollision(Entity crate) {

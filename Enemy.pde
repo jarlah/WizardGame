@@ -20,8 +20,7 @@ class Enemy extends Entity {
   }
 
   void draw() {
-    fill(18, 233, 23);
-    rect(x, y, w, h);
+    image(sprites[13][94], x, y);
   }
 
   void hit() {

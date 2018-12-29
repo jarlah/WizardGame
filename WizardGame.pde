@@ -1,4 +1,4 @@
-int gameScreen = 0;
+int gameScreen = 0; //<>// //<>//
 
 ObjectHandler objectHandler;
 
@@ -6,11 +6,14 @@ InputHandler inputHandler;
 
 Camera camera;
 
+PImage[][] sprites;
+
 static final int TILE_SIZE = 32;
 
 void setup() {
   size(640, 480, P2D);
   camera = new Camera(0, 0, TILE_SIZE, width, height);
+  sprites = loadSprites();
   inputHandler = new InputHandler();
   objectHandler = new ObjectHandler(inputHandler);
   PImage mapImg = loadImage("level1map.png");
@@ -37,7 +40,7 @@ void initScreen() {
 }
 
 void gameScreen() {
-  background(255);
+  background(99);
   objectHandler.update();
   camera.update(objectHandler.player);
   translate(-camera.x, -camera.y);
@@ -48,6 +51,22 @@ void gameScreen() {
   fill(0);
   textSize(14);
   text("Bullets: " + objectHandler.player.ammo, 50, 18);
+}
+
+public PImage[][] loadSprites() {
+
+  int spw = 32;
+  int sph = 32;
+
+  PImage spriteBlock = loadImage("spritesheet.png");
+  PImage[][] sprites = new PImage[spriteBlock.width / spw][spriteBlock.height / sph];
+  for (int x=0; x < spriteBlock.width / spw; x++) {
+    for (int y=0; y < spriteBlock.height / sph; y++) {
+      sprites[x][y] = spriteBlock.get(spw * (int)x, sph * (int)y, spw, sph);
+    }
+  }
+  
+  return sprites;
 }
 
 void gameOverScreen() {
