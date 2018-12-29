@@ -43,6 +43,7 @@ class Game {
     objectHandler.update();
     if (objectHandler.player.health <= 0) {
      gameScreen = 2;
+     return;
     }
     camera.update(objectHandler.player);
     translate(-camera.x, -camera.y);
