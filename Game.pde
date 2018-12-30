@@ -18,6 +18,7 @@ class Game {
     sprites = new Sprites("spritesheet.png", tileSize);
     inputHandler = new InputHandler();
     objectHandler = new ObjectHandler(this.inputHandler, this.sprites);
+    camera = new Camera(0, 0, this.width, this.height);
 
     Consumer<Integer> screenUpdater = new Consumer<Integer>() {
       void accept(Integer screen) {
@@ -31,7 +32,6 @@ class Game {
 
     PImage mapImg = loadImage("level2map.png");
     mapImg.loadPixels();
-    camera = new Camera(0, 0, this.width, this.height);
     loadMap(mapImg.pixels, mapImg.width, mapImg.height, tileSize, tileSize, this.objectHandler);
   }
 
