@@ -6,7 +6,8 @@ void setup() {
 }
 
 void draw() {
- game.draw();
+  game.update();
+  game.draw();
 }
 
 public void mousePressed(MouseEvent event) {

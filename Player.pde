@@ -1,10 +1,10 @@
 class Player extends Entity {
   final InputHandler inputHandler;
-  
+
   float speed = 2.5;
 
   int ammo = 100;
-  
+
   int health = 100;
 
   Player(float x, float y, int w, int h, ObjectHandler objectHandler, InputHandler inputHandler, Sprites sprites) {
@@ -42,9 +42,9 @@ class Player extends Entity {
       objectHandler.removeEntity(crate);
     }
   }
-  
+
   void hit() {
-   health -= 1;
+    health -= 1;
   }
 
   void fire(float mouseX, float mouseY) {

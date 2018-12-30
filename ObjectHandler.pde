@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.List; //<>//
 import java.util.ArrayList;
 
 class ObjectHandler {
@@ -8,7 +8,7 @@ class ObjectHandler {
 
   InputHandler inputHandler;
   Sprites sprites;
-  
+
   ObjectHandler(InputHandler inputHandler, Sprites sprites) {
     this.inputHandler = inputHandler;
     this.sprites = sprites;

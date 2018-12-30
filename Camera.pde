@@ -25,5 +25,4 @@ class Camera {
       y = 0;
     }
   }
-
 }

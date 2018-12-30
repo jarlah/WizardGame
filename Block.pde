@@ -16,9 +16,9 @@ class Block extends Entity {
   }
 
   void hit() {
-   health -= 1;
-   if (health <= 0) { //<>//
-    objectHandler.removeEntity(this);
-   }
+    health -= 1;
+    if (health <= 0) { //<>//
+      objectHandler.removeEntity(this);
+    }
   }
 }

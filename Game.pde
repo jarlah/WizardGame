@@ -3,7 +3,12 @@ class Game {
   ObjectHandler objectHandler;
   Sprites sprites;
   Camera camera;
-  int gameScreen = 0;
+
+  InitScreen initScreen;
+  GameScreen gameScreen;
+  GameOverScreen gameOverScreen;
+
+  int gameScreenCode = 0;
 
   final int width, height;
 
@@ -13,64 +18,52 @@ class Game {
     sprites = new Sprites("spritesheet.png", tileSize);
     inputHandler = new InputHandler();
     objectHandler = new ObjectHandler(this.inputHandler, this.sprites);
+
+    Consumer<Integer> screenUpdater = new Consumer<Integer>() {
+      void accept(Integer screen) {
+        gameScreenCode = screen;
+      }
+    };
+
+    initScreen = new InitScreen(screenUpdater, objectHandler, camera);
+    gameScreen = new GameScreen(screenUpdater, objectHandler, camera);
+    gameOverScreen = new GameOverScreen(screenUpdater, objectHandler, camera);
+
     PImage mapImg = loadImage("level2map.png");
     mapImg.loadPixels();
     camera = new Camera(0, 0, this.width, this.height);
     loadMap(mapImg.pixels, mapImg.width, mapImg.height, tileSize, tileSize, this.objectHandler);
   }
 
+  void update() {
+    if (gameScreenCode == 0) {
+      initScreen.update();
+    }
+    if (gameScreenCode == 1) {
+      gameScreen.update();
+    }
+    if (gameScreenCode == 2) {
+      gameOverScreen.update();
+    }
+  }
+
   void draw() {
-    if (gameScreen == 0) {
-      initScreen();
+    if (gameScreenCode == 0) {
+      initScreen.draw();
     }
-    if (gameScreen == 1) {
-      gameScreen();
+    if (gameScreenCode == 1) {
+      gameScreen.draw();
     }
-    if (gameScreen == 2) {
-      gameOverScreen();
+    if (gameScreenCode == 2) {
+      gameOverScreen.draw();
     }
-  }
-
-  void initScreen() {
-    background(0);
-    fill(255);
-    textAlign(CENTER);
-    text("Click to start", height / 2, width / 2);
-  }
-
-  void gameScreen() {
-    background(99);
-    objectHandler.update();
-    if (objectHandler.player.health <= 0) {
-     gameScreen = 2;
-     return;
-    }
-    camera.update(objectHandler.player);
-    translate(-camera.x, -camera.y);
-    objectHandler.draw();
-    translate(camera.x, camera.y);
-    fill(208);
-    rect(0, 0, 200, 32);
-    fill(0);
-    textSize(14);
-    text("Bullets: " + objectHandler.player.ammo + ", Health: " + objectHandler.player.health, 100, 18);
-  }
-
-  void gameOverScreen() {
-    background(255);
-    textAlign(CENTER);
-    text("Game over", height / 2, width / 2);
-  }
-
-  void startGame() {
-    gameScreen = 1;
   }
 
   void mousePressed(MouseEvent event) {
-    if (gameScreen == 0) {
-      startGame();
-    } else if (gameScreen == 1) {
-      objectHandler.player.fire(event.getX() + camera.x, event.getY() + camera.y);
+    if (gameScreenCode == 0) {
+      gameScreenCode = 1;
+    } else if (gameScreenCode == 1) {
+      gameScreen.fire(event);
     }
   }
 

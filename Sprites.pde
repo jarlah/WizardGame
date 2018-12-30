@@ -4,23 +4,23 @@ class Sprites {
   Sprites(String path, int tileSize) {
     sprites = loadSprites(path, tileSize);
   }
-  
+
   PImage getCrate() {
-   return sprites[6][0];
+    return sprites[6][0];
   }
-  
+
   PImage getEnemy() {
     return sprites[13][94];
   }
-  
+
   PImage getBlock() {
     return sprites[4][7];
   }
-  
+
   PImage getPotion() {
     return sprites[3][0];
   }
-  
+
   PImage getPlayer() {
     return sprites[33][76];
   }
